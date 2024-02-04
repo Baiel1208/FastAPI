@@ -35,16 +35,6 @@ class SHotelSearchArgs:
 def get_hotels(search_args: SHotelSearchArgs=Depends()):
     return search_args
 
-
-class SBooking(BaseModel):
-    room_id: int
-    date_from: date
-    date_to: date
-
-
-@app.post("/bookings")
-def add_booking(booking: SBooking):
-    pass
 # if __name__ == '__main__':
 #     print_hi('PyCharm')
 
