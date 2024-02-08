@@ -1,5 +1,5 @@
 from app.dao.base import BaseDAO
-from app.hotels.models import Hotels
+from app.hotels.models import Hotels, Rooms
 
 
 class HotelDAO(BaseDAO):
@@ -9,3 +9,7 @@ class HotelDAO(BaseDAO):
     @classmethod
     async def find_all():
         pass
+
+
+class RoomDAO(BaseDAO):
+    model = Rooms
