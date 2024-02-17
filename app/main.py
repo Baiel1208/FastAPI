@@ -3,7 +3,7 @@ from fastapi.staticfiles import StaticFiles
 
 from typing import Optional
 from datetime import date
-from pydantic import BaseModel
+# from pydantic import BaseModel
 
 from app.bookings.router import router as router_bookings
 from app.users.router import router as router_users
@@ -13,7 +13,7 @@ from app.images.router import router as router_images
 
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.redis import RedisBackend
-from fastapi_cache.decorator import cache
+# from fastapi_cache.decorator import cache
 
 from redis import asyncio as aioredis
 
