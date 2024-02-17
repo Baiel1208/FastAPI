@@ -16,4 +16,11 @@ class HotelInfo(BaseModel):
 
 
 class RoomInfo(BaseModel):
-    pass
+    id: int
+    hotel_id: int
+    name: str
+    description: str
+    price: int
+    services: str
+    quantity: int
+    image_id: int
