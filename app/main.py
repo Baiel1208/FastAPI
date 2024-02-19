@@ -3,9 +3,10 @@ from fastapi.staticfiles import StaticFiles
 
 from typing import Optional
 from datetime import date
-# from pydantic import BaseModel
+from pydantic import BaseModel
 
 from app.bookings.router import router as router_bookings
+from app.config import settings
 from app.users.router import router as router_users
 from app.hotels.router import router as router_hotels
 from app.pages.router import router as router_pages
@@ -13,7 +14,7 @@ from app.images.router import router as router_images
 
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.redis import RedisBackend
-# from fastapi_cache.decorator import cache
+from fastapi_cache.decorator import cache
 
 from redis import asyncio as aioredis
 
@@ -56,5 +57,5 @@ def get_hotels(search_args: SHotelSearchArgs=Depends()):
 
 @app.on_event("startup")
 def startup():
-    redis = aioredis.from_url("redis://localhost", encoding="utf8", decode_responses=True)
+    redis = aioredis.from_url(f"redis://{settings.REIDS_HOST}:{settings.REIDS_PORT}", encoding="utf8", decode_responses=True)
     FastAPICache.init(RedisBackend(redis), prefix="cache")

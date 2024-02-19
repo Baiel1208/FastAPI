@@ -1,4 +1,5 @@
 from datetime import date
+from typing import Optional
 from pydantic import BaseModel
 
 
@@ -12,6 +13,17 @@ class SBooking(BaseModel):
     total_cost: int
     total_days: int
 
+
+    class Config:
+        orm_mode = True
+
+class SBookingInfo(BaseModel):
+    hotel_name: str
+    room_name: str
+    room_description: Optional[str]
+    room_services: list[str]
+    date_from: date
+    date_to: date
 
     class Config:
         orm_mode = True

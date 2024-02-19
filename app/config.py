@@ -1,4 +1,4 @@
-from pydantic_settings import BaseSettings
+from pydantic.v1 import BaseSettings
 from pydantic import root_validator
 
 class Settings(BaseSettings):
@@ -14,6 +14,14 @@ class Settings(BaseSettings):
 
     SECRET_KEY: str
     ALRORITHM: str
+
+    SMTP_HOST: str
+    SMTP_PORT: int
+    SMTP_USER: str
+    SMTP_PASS: str
+
+    REIDS_HOST: str
+    REIDS_PORT: int
 
     class Config:
         env_file = ".env"

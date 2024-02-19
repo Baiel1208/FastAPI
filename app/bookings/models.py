@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, ForeignKey, String, Date, Computed
+from typing import Optional
+from sqlalchemy import JSON, Column, Integer, ForeignKey, String, Date, Computed
 
 from app.database import Base
 
@@ -14,3 +15,15 @@ class Bookings(Base):
     price = Column(Integer, nullable=False)
     total_cost = Column(Integer, Computed("(date_to - date_from) * price"))
     total_days = Column(Integer, Computed("date_to - date_from"))
+
+
+class BookingInfo(Base):
+    __tablename__ = "booking"
+
+    id = Column(Integer, primary_key=True)
+    hotel_name = Column(String, nullable=False)
+    room_name = Column(String, nullable=False)
+    room_description = Column(String, nullable=False)
+    room_services = Column(JSON, nullable=False)
+    date_from = Column(Date, nullable=False) 
+    date_to = Column(Date, nullable=False)
