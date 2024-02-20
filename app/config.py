@@ -1,7 +1,10 @@
+from typing import Literal
 from pydantic.v1 import BaseSettings
 from pydantic import root_validator
 
 class Settings(BaseSettings):
+    MODE: Literal['DEV', 'TEST', 'PROD']
+
     DB_HOST: str
     DB_PORT: int
     DB_USER: str
